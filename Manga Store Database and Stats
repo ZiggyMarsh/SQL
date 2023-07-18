@@ -1,0 +1,40 @@
+-- Create a Manga Store Database
+
+CREATE TABLE Anime (id INTEGER PRIMARY KEY, Name TEXT, Price NUMERIC, AgeRating TEXT, Year INTEGER, Genre TEXT );
+
+INSERT INTO Anime VALUES
+(1, "Overlord", 19.99, "16+", 2010, "Fantasy");
+INSERT INTO Anime VALUES
+(2, "Berserk", 24.99, "18+", 1989, "Dark Fantasy");
+INSERT INTO Anime VALUES 
+(3, "Claymore", 14.99, "16+", 2001, "Dark Fantasy");
+INSERT INTO Anime VALUES
+(4, "Hellsing", 19.99, "18+", 1997, "Horror");
+INSERT INTO Anime VALUES
+(5, "Project K", 16.99, "13+", 2012, "Action");
+INSERT INTO Anime VALUES
+(6, 'Black Lagoon', 18.99, '18+', 2002, 'Action');
+INSERT INTO Anime VALUES
+(7, 'DragonballZ', 15.99, '7+', 1984, 'Adventure');
+INSERT INTO Anime VALUES
+(8, 'Monster', 22.99, '16+', 1994, 'Thriller');
+INSERT INTO Anime VALUES
+(9, 'Fate', 21.99, '13+', 2004, 'Fantasy');
+INSERT INTO Anime VALUES 
+(10, "Steins Gate", 20.99, "16+", 2009, "Sci-Fi");
+INSERT INTO Anime VALUES
+(11, "Death Note", 19.99, "13+", 2003, "Mystery");
+INSERT INTO Anime VALUES 
+(12, "Death Parade", 17.99, "16+", 2015, "Psychological");
+INSERT INTO Anime VALUES
+(13, "Tanya The Evil", 23.99, "16+", 2013, "Military");
+INSERT INTO Anime VALUES
+(14, "Shield Hero", 19.99, "13+", 2013, "Fantasy");
+INSERT INTO Anime VALUES
+(15, "Castlevania", 24.99, "18+", 2016, "Adventure");
+
+--Displayed the database ordered by Price, and Genre
+SELECT * FROM Anime ORDER BY Price, Genre
+
+
+
