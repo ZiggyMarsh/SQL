@@ -1,0 +1,99 @@
+-- Create the table to store information about famous people
+CREATE TABLE FamousPeople (
+  ID INTEGER PRIMARY KEY,   -- Unique identifier for each famous person
+  Name TEXT,                -- Name of the famous person
+  Occupation TEXT           -- Occupation of the famous person (e.g., movie star, singer, author)
+);
+
+-- Insert example data into the FamousPeople table
+INSERT INTO FamousPeople (ID, Name, Occupation)
+VALUES
+  (1, 'John Doe', 'Movie star'),
+  (2, 'Jane Smith', 'Movie star'),
+  (3, 'James Johnson', 'Movie star'),
+  (4, 'Emily Brown', 'Movie star'),
+  (5, 'Michael Lee', 'Movie star');
+
+-- Create the table to store information about movie stars
+CREATE TABLE MovieStars (
+  ID INTEGER,               -- Foreign key referencing the FamousPeople table
+  MovieName TEXT            -- Name of the movie in which the movie star appears
+  -- The FOREIGN KEY constraint ensures that the ID in MovieStars references the ID in FamousPeople
+);
+
+-- Insert example data into the MovieStars table
+INSERT INTO MovieStars (ID, MovieName)
+VALUES
+  (1, 'Movie A'),
+  (1, 'Movie B'),
+  (2, 'Movie C'),
+  (2, 'Movie D'),
+  (3, 'Movie B'),
+  (3, 'Movie E'),
+  (4, 'Movie F'),
+  (4, 'Movie G'),
+  (5, 'Movie H'),
+  (5, 'Movie I');
+
+-- Create the table to store information about singers
+CREATE TABLE Singers (
+  ID INTEGER,               -- Foreign key referencing the FamousPeople table
+  SongName TEXT,            -- Name of the song written by the singer
+  Origin TEXT               -- Origin or city of the singer
+  -- The FOREIGN KEY constraint ensures that the ID in Singers references the ID in FamousPeople
+);
+
+-- Insert example data into the Singers table
+INSERT INTO Singers (ID, SongName, Origin)
+VALUES
+  (2, 'Song X', 'City Y'),
+  (2, 'Song Y', 'City Z'),
+  (5, 'Song Z', 'City X');
+
+-- Create the table to store information about authors
+CREATE TABLE Authors (
+  ID INTEGER,               -- Foreign key referencing the FamousPeople table
+  BookName TEXT             -- Name of the book written by the author
+  -- The FOREIGN KEY constraint ensures that the ID in Authors references the ID in FamousPeople
+);
+
+-- Insert example data into the Authors table
+INSERT INTO Authors (ID, BookName)
+VALUES
+  (1, 'Book Alpha'),
+  (2, 'Book Beta'),
+  (4, 'Book Gamma'),
+  (5, 'Book Delta');
+
+-- Create the table to store information about fictional characters
+CREATE TABLE FictionalCharacters (
+  ID INTEGER PRIMARY KEY,   -- Unique identifier for each fictional character
+  Name TEXT,                -- Name of the fictional character
+  BookName TEXT             -- Name of the book in which the fictional character appears
+);
+
+-- Insert example data into the FictionalCharacters table
+INSERT INTO FictionalCharacters (ID, Name, BookName)
+VALUES
+  (6, 'Character A', 'Book Z'),
+  (7, 'Character B', 'Book Z'),
+  (8, 'Character C', 'Book Y'),
+  (9, 'Character D', 'Book X');
+
+-- Create the table to store relationships between fictional characters
+CREATE TABLE FictionalCharacterRelationships (
+  CharacterID INTEGER,      -- Foreign key referencing the FictionalCharacters table (Parent character)
+  RelatedCharacterID INTEGER,  -- Foreign key referencing the FictionalCharacters table (Related character)
+  Relationship TEXT,        -- Type of relationship between the characters (e.g., sibling, friend)
+  PRIMARY KEY (CharacterID, RelatedCharacterID),
+  -- The FOREIGN KEY constraints ensure that CharacterID and RelatedCharacterID reference the ID in FictionalCharacters
+  FOREIGN KEY (CharacterID) REFERENCES FictionalCharacters(ID),
+  FOREIGN KEY (RelatedCharacterID) REFERENCES FictionalCharacters(ID)
+);
+
+-- Insert example data into the FictionalCharacterRelationships table
+INSERT INTO FictionalCharacterRelationships (CharacterID, RelatedCharacterID, Relationship)
+VALUES
+  (6, 7, 'Sibling'),
+  (6, 8, 'Friend'),
+  (8, 9, 'Parent');
